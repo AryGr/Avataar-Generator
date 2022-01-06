@@ -93,7 +93,7 @@ String getSvg(Options options) {
       </svg>""";
 }
 
-String faceSvg(Mouth mouth, Eyes eyes, Eyebrow eyeBrow) {
+String faceSvg(Mouth? mouth, Eyes? eyes, Eyebrow? eyeBrow) {
   return """<g id="Face" transform="translate(76.000000, 82.000000)" fill="#000000">""" +
       mouthSvg(mouth) +
       noseSvg() +
@@ -104,20 +104,20 @@ String faceSvg(Mouth mouth, Eyes eyes, Eyebrow eyeBrow) {
 }
 
 class Options {
-  AvatarStyle style;
-  Top top;
-  Accessories accessories;
-  HairColor hairColor;
-  FacialHair facialHair;
-  Cloth clothes;
-  ClothColor clothColor;
-  Eyes eyes;
-  Eyebrow eyebrow;
-  Mouth mouth;
-  Skin skin;
-  HatColor hatColor;
-  FacialHairColor facialHairColor;
-  Graphic graphic;
+  AvatarStyle? style;
+  Top? top;
+  Accessories? accessories;
+  HairColor? hairColor;
+  FacialHair? facialHair;
+  Cloth? clothes;
+  ClothColor? clothColor;
+  Eyes? eyes;
+  Eyebrow? eyebrow;
+  Mouth? mouth;
+  Skin? skin;
+  HatColor? hatColor;
+  FacialHairColor? facialHairColor;
+  Graphic? graphic;
 
   Options() {
     style = AvatarStyle.circle;

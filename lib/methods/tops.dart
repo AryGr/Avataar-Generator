@@ -2,8 +2,8 @@ import '../enums.dart';
 import 'accessories.dart';
 import 'colors.dart';
 
-String topSVG(Top top, FacialHair fh, Accessories acc, HatColor hColor,
-    FacialHairColor fhc, HairColor hairC) {
+String topSVG(Top? top, FacialHair? fh, Accessories? acc, HatColor? hColor,
+    FacialHairColor? fhc, HairColor? hairC) {
   switch (top) {
     case Top.nohair:
       {
@@ -2170,7 +2170,7 @@ String topSVG(Top top, FacialHair fh, Accessories acc, HatColor hColor,
   }
 }
 
-String facialHair(FacialHair hair, FacialHairColor color) {
+String facialHair(FacialHair? hair, FacialHairColor? color) {
   switch (hair) {
     case FacialHair.blank:
       return "";

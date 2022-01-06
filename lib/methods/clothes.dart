@@ -1,7 +1,7 @@
 import '../enums.dart';
 import 'colors.dart';
 
-String getClothSvg(Cloth cloth, ClothColor color, Graphic graphic) {
+String getClothSvg(Cloth? cloth, ClothColor? color, Graphic? graphic) {
   switch (cloth) {
     case Cloth.blazerShirt:
       return blazerShirt();
@@ -152,7 +152,7 @@ String blazerSweater() {
       </g>""";
 }
 
-String collarSweater(ClothColor color) {
+String collarSweater(ClothColor? color) {
   return """
   <g
         id='Clothing/Collar-+-Sweater'
@@ -182,7 +182,7 @@ String collarSweater(ClothColor color) {
       </g>""";
 }
 
-String graphicShirt(ClothColor color, Graphic g) {
+String graphicShirt(ClothColor? color, Graphic? g) {
   return """
   <g
         id='Clothing/Graphic-Shirt'
@@ -207,7 +207,7 @@ String graphicShirt(ClothColor color, Graphic g) {
       """</g>""";
 }
 
-String hoodie(ClothColor color) {
+String hoodie(ClothColor? color) {
   return """
   <g id='Clothing/Hoodie' transform='translate(0.000000, 170.000000)'>
         <defs>
@@ -244,7 +244,7 @@ String hoodie(ClothColor color) {
       </g>""";
 }
 
-String overall(ClothColor color) {
+String overall(ClothColor? color) {
   return """
   <g id='Clothing/Overall' transform='translate(0.000000, 170.000000)'>
         <defs>
@@ -282,7 +282,7 @@ String overall(ClothColor color) {
       </g>""";
 }
 
-String shirtCrewNeck(ClothColor color) {
+String shirtCrewNeck(ClothColor? color) {
   return """
   <g
         id='Clothing/Shirt-Crew-Neck'
@@ -323,7 +323,7 @@ String shirtCrewNeck(ClothColor color) {
       </g>""";
 }
 
-String shirtScoopNeck(ClothColor color) {
+String shirtScoopNeck(ClothColor? color) {
   return """
   <g
         id='Clothing/Shirt-Scoop-Neck'
@@ -347,7 +347,7 @@ String shirtScoopNeck(ClothColor color) {
       """</g>""";
 }
 
-String shirtVNeck(ClothColor color) {
+String shirtVNeck(ClothColor? color) {
   return """
   <g id='Clothing/Shirt-V-Neck' transform='translate(0.000000, 170.000000)'>
         <defs>
@@ -369,7 +369,7 @@ String shirtVNeck(ClothColor color) {
       """</g>""";
 }
 
-String graphic(Graphic graphic, String maskId) {
+String graphic(Graphic? graphic, String maskId) {
   switch (graphic) {
     case Graphic.bat:
       return """

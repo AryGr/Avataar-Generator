@@ -13,7 +13,7 @@ String noseSvg() {
       </g>""";
 }
 
-String eyesSvg(Eyes eye) {
+String eyesSvg(Eyes? eye) {
   switch (eye) {
     case Eyes.close:
       return """
@@ -261,7 +261,7 @@ String eyesSvg(Eyes eye) {
   }
 }
 
-String eyebrowSvg(Eyebrow brow) {
+String eyebrowSvg(Eyebrow? brow) {
   switch (brow) {
     case Eyebrow.angry:
       return """
@@ -447,7 +447,7 @@ String eyebrowSvg(Eyebrow brow) {
   }
 }
 
-String mouthSvg(Mouth mouth) {
+String mouthSvg(Mouth? mouth) {
   switch (mouth) {
     case Mouth.concerned:
       return """

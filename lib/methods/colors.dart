@@ -11,29 +11,29 @@ String makeColor(String hex, String maskId) {
         </g>""";
 }
 
-String facialHairColor(FacialHairColor color, String maskId) {
+String facialHairColor(FacialHairColor? color, String maskId) {
   return makeColor(facialHairColorHex(color), maskId);
 }
 
-String hairColor(HairColor color, String maskId) {
+String hairColor(HairColor? color, String maskId) {
   return makeColor(hairColorHex(color), maskId);
 }
 
-String hatColor(HatColor color, String maskId) {
+String hatColor(HatColor? color, String maskId) {
   return makeColor(hatColorHex(color), maskId);
 }
 
-String skinSvg(Skin skin, String maskId) {
+String skinSvg(Skin? skin, String maskId) {
   return makeColor(skinColorHex(skin), maskId);
 }
 
-clothColor(ClothColor color, String maskId) {
+clothColor(ClothColor? color, String maskId) {
   return makeColor(clothColorHex(color), maskId);
 }
 
 // App wide Hex
 
-String facialHairColorHex(FacialHairColor color) {
+String facialHairColorHex(FacialHairColor? color) {
   switch (color) {
     case FacialHairColor.auburn:
       return "#A55728";
@@ -58,7 +58,7 @@ String facialHairColorHex(FacialHairColor color) {
   }
 }
 
-String hairColorHex(HairColor color) {
+String hairColorHex(HairColor? color) {
   switch (color) {
     case HairColor.aurburn:
       return "#A55728";
@@ -85,7 +85,7 @@ String hairColorHex(HairColor color) {
   }
 }
 
-String hatColorHex(HatColor color) {
+String hatColorHex(HatColor? color) {
   switch (color) {
     case HatColor.black:
       return "#262E33";
@@ -122,7 +122,7 @@ String hatColorHex(HatColor color) {
   }
 }
 
-String skinColorHex(Skin skin) {
+String skinColorHex(Skin? skin) {
   switch (skin) {
     case Skin.tanned:
       return "#FD9841";
@@ -143,7 +143,7 @@ String skinColorHex(Skin skin) {
   }
 }
 
-String clothColorHex(ClothColor color) {
+String clothColorHex(ClothColor? color) {
   switch (color) {
     case ClothColor.black:
       return "#262E33";
