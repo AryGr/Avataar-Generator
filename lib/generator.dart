@@ -163,7 +163,7 @@ class Options {
         enumFromString(HatColor.values, json["hatColor"], HatColor.black);
     opt.facialHairColor = enumFromString(
         FacialHairColor.values, json["facialHairColor"], FacialHairColor.black);
-    opt.graphic = enumFromString(Graphic.values, json["style"], Graphic.skull);
+    opt.graphic = enumFromString(Graphic.values, json["graphic"], Graphic.skull);
     return opt;
   }
 
