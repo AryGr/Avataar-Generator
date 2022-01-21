@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:avataar_generator/enums.dart';
 import 'package:avataar_generator/methods/clothes.dart';
 import 'package:avataar_generator/methods/colors.dart';
@@ -36,29 +38,12 @@ String getSvg(Options options) {
             transform="translate(-825.000000, -1100.000000)"
             id="Avataaar/Circle">
             <g transform="translate(825.000000, 1100.000000)">
-                <g
-                  id="Circle"
-                  stroke-width="1"
-                  fill-rule="evenodd"
-                  transform="translate(12.000000, 40.000000)">
-                  <mask id="mask-2" fill="white">
-                    <use href="#path-1" />
-                  </mask>
-                  <use
-                    id="Circle-Background"
-                    fill="#E6E6E6"
-                    href="#path-1"
-                  />
-                  <g
-                    id="Color/Palette/Blue-01"
-                    mask="url(#mask-2)"
-                    fill="#65C9FF">
-                    <rect id="pen-Color" x="0" y="0" width="240" height="240" />
-                  </g>
-                </g>
                 <mask id="mask-4" fill="white">
                   <use href="#path-3" />
                 </mask>
+                """ +
+      backgroundStyle(options.style) +
+      """
               <g id="Mask" />
               <g
                 id="Avataaar"
@@ -66,6 +51,9 @@ String getSvg(Options options) {
                 fill-rule="evenodd"
                 mask="url(#mask-4)">
                 <g id="Body" transform="translate(32.000000, 36.000000)">
+                  <mask id="mask-2" fill="white">
+                    <use href="#path-1" />
+                  </mask>
                   <mask id="mask-6" fill="white">
                     <use href="#path-5" />
                   </mask>
@@ -93,6 +81,28 @@ String getSvg(Options options) {
       </svg>""";
 }
 
+String backgroundStyle(AvatarStyle? style) {
+  return style == AvatarStyle.transparent
+      ? ""
+      : """<g
+                  id="Circle"
+                  stroke-width="1"
+                  fill-rule="evenodd"
+                  transform="translate(12.000000, 40.000000)">
+                  <use
+                    id="Circle-Background"
+                    fill="#E6E6E6"
+                    href="#path-1"
+                  />
+                  <g
+                    id="Color/Palette/Blue-01"
+                    mask="url(#mask-2)"
+                    fill="#65C9FF">
+                    <rect id="pen-Color" x="0" y="0" width="240" height="240" />
+                  </g>
+                </g>""";
+}
+
 String faceSvg(Mouth? mouth, Eyes? eyes, Eyebrow? eyeBrow) {
   return """<g id="Face" transform="translate(76.000000, 82.000000)" fill="#000000">""" +
       mouthSvg(mouth) +
@@ -101,6 +111,12 @@ String faceSvg(Mouth? mouth, Eyes? eyes, Eyebrow? eyeBrow) {
       eyebrowSvg(eyeBrow) +
       """</g>
       """;
+}
+
+extension RandomElement<T> on List<T> {
+  T random() {
+    return this[Random().nextInt(this.length)];
+  }
 }
 
 class Options {
@@ -134,6 +150,26 @@ class Options {
     hatColor = HatColor.black;
     facialHairColor = FacialHairColor.black;
     graphic = Graphic.skull;
+  }
+
+  factory Options.random() {
+    AvatarStyle.values.random();
+    Options opt = Options()
+      ..style = AvatarStyle.values.random()
+      ..top = Top.values.random()
+      ..accessories = Accessories.values.random()
+      ..hairColor = HairColor.values.random()
+      ..facialHair = FacialHair.values.random()
+      ..clothes = Cloth.values.random()
+      ..clothColor = ClothColor.values.random()
+      ..eyes = Eyes.values.random()
+      ..eyebrow = Eyebrow.values.random()
+      ..mouth = Mouth.values.random()
+      ..skin = Skin.values.random()
+      ..hatColor = HatColor.values.random()
+      ..facialHairColor = FacialHairColor.values.random()
+      ..graphic = Graphic.values.random();
+    return opt;
   }
 
   factory Options.fromJson(String str)=> Options.fromMap(json.decode(str));
