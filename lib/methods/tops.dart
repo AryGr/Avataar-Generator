@@ -110,7 +110,7 @@ String topSVG(Top? top, FacialHair? fh, Accessories? acc, HatColor? hColor,
           <use href='#top_rect_id' />
         </mask>
         <g id='Mask' />
-        <g id='Top/Accesories/Hat' mask="url(#top_mask)"}>
+        <g id='Top/Accesories/Hat' mask="url(#top_mask)">
           <g transform='translate(-1.000000, 0.000000)'>
             <g
               id='Hat'

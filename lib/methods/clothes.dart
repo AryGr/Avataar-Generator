@@ -39,7 +39,7 @@ String blazerShirt() {
         </defs>
         <g id="Shirt" transform="translate(32.000000, 29.000000)">
           <mask id="cloth_mask" fill="white">
-            <use href="#cloth_mask" />
+            <use href="#cloth_path" />
           </mask>
           <use id="Clothes" fill="#E6E6E6" href="#cloth_path" />
           <g id="Color/Palette/Black" mask="url(#cloth_mask)" fill="#262E33">
