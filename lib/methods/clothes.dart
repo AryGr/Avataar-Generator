@@ -153,6 +153,7 @@ String blazerSweater() {
 }
 
 String collarSweater(ClothColor? color) {
+  final colorContent = clothColor(color, "collar_mask");
   return """
   <g
         id='Clothing/Collar-+-Sweater'
@@ -171,9 +172,7 @@ String collarSweater(ClothColor? color) {
           fill='#E6E6E6'
           fill-rule='evenodd'
           href='#collar_path'
-        />""" +
-      clothColor(color, "collar_mask") +
-      """<path
+        />$colorContent<path
           d='M156,22.2794906 C162.181647,26.8351858 166,33.1057265 166,40.027915 C166,47.2334941 161.862605,53.7329769 155.228997,58.3271669 L149.57933,53.8764929 L145,54.207887 L146,51.0567821 L145.922229,50.995516 C152.022491,47.8530505 156,42.7003578 156,36.8768102 L156,22.2794906 Z M108,21.5714994 C101.232748,26.1740081 97,32.7397769 97,40.027915 C97,47.4261549 101.361602,54.080035 108.308428,58.6915723 L114.42067,53.8764929 L119,54.207887 L118,51.0567821 L118.077771,50.995516 C111.977509,47.8530505 108,42.7003578 108,36.8768102 L108,21.5714994 Z'
           id='Collar'
           fill='#F2F2F2'
@@ -183,6 +182,8 @@ String collarSweater(ClothColor? color) {
 }
 
 String graphicShirt(ClothColor? color, Graphic? g) {
+  final colorContent = clothColor(color, "shirt_mask");
+  final graphicContent = graphic(g, "shirt_mask");
   return """
   <g
         id='Clothing/Graphic-Shirt'
@@ -201,13 +202,11 @@ String graphicShirt(ClothColor? color, Graphic? g) {
           fill='#E6E6E6'
           fill-rule='evenodd'
           href='#shirt_path'
-        />""" +
-      clothColor(color, "shirt_mask") +
-      graphic(g, "shirt_mask") +
-      """</g>""";
+        />$colorContent$graphicContent</g>""";
 }
 
 String hoodie(ClothColor? color) {
+  final colorContent = clothColor(color, "hoodie_mask");
   return """
   <g id='Clothing/Hoodie' transform='translate(0.000000, 170.000000)'>
         <defs>
@@ -224,9 +223,7 @@ String hoodie(ClothColor? color) {
           fill='#B7C1DB'
           fill-rule='evenodd'
           href='#hoodie_path'
-        />""" +
-      clothColor(color, "hoodie_mask") +
-      """<path
+        />$colorContent<path
           d='M102,61.7390531 L102,110 L95,110 L95,58.1502625 C97.2037542,59.4600576 99.5467694,60.6607878 102,61.7390531 Z M169,58.1502625 L169,98.5 C169,100.432997 167.432997,102 165.5,102 C163.567003,102 162,100.432997 162,98.5 L162,61.7390531 C164.453231,60.6607878 166.796246,59.4600576 169,58.1502625 Z'
           id='Straps'
           fill='#F4F4F4'
@@ -245,6 +242,7 @@ String hoodie(ClothColor? color) {
 }
 
 String overall(ClothColor? color) {
+  final colorContent = clothColor(color, "overall_mask");
   return """
   <g id='Clothing/Overall' transform='translate(0.000000, 170.000000)'>
         <defs>
@@ -261,9 +259,7 @@ String overall(ClothColor? color) {
           fill='#B7C1DB'
           fill-rule='evenodd'
           href='#overall_path'
-        />""" +
-      clothColor(color, "overall_mask") +
-      """<circle
+        />$colorContent<circle
           id='Button'
           fill='#F4F4F4'
           fill-rule='evenodd'
@@ -283,6 +279,7 @@ String overall(ClothColor? color) {
 }
 
 String shirtCrewNeck(ClothColor? color) {
+  final colorContent = clothColor(color, "crew_mask");
   return """
   <g
         id='Clothing/Shirt-Crew-Neck'
@@ -301,9 +298,7 @@ String shirtCrewNeck(ClothColor? color) {
           fill='#E6E6E6'
           fill-rule='evenodd'
           href='#crew_path'
-        />""" +
-      clothColor(color, "crew_mask") +
-      """<g
+        />$colorContent<g
           id='Shadowy'
           opacity='0.599999964'
           stroke-width='1'
@@ -324,6 +319,7 @@ String shirtCrewNeck(ClothColor? color) {
 }
 
 String shirtScoopNeck(ClothColor? color) {
+  final colorContent = clothColor(color, "scoop_mask");
   return """
   <g
         id='Clothing/Shirt-Scoop-Neck'
@@ -342,12 +338,11 @@ String shirtScoopNeck(ClothColor? color) {
           fill='#E6E6E6'
           fill-rule='evenodd'
           href='#scoop_path'
-        />""" +
-      clothColor(color, "scoop_mask") +
-      """</g>""";
+        />$colorContent</g>""";
 }
 
 String shirtVNeck(ClothColor? color) {
+  final colorContent = clothColor(color, "v_mask");
   return """
   <g id='Clothing/Shirt-V-Neck' transform='translate(0.000000, 170.000000)'>
         <defs>
@@ -364,9 +359,7 @@ String shirtVNeck(ClothColor? color) {
           fill='#E6E6E6'
           fill-rule='evenodd'
           href='#v_path'
-        />""" +
-      clothColor(color, "v_mask") +
-      """</g>""";
+        />$colorContent</g>""";
 }
 
 String graphic(Graphic? graphic, String maskId) {
@@ -375,7 +368,7 @@ String graphic(Graphic? graphic, String maskId) {
       return """
       <g
         id='Clothing/Graphic/Bat'
-        mask='url(#${maskId})'
+        mask='url(#$maskId)'
         fill-rule='evenodd'
         fill='#FFFFFF'>
         <g transform='translate(77.000000, 58.000000)' id='Batman!'>
@@ -386,7 +379,7 @@ String graphic(Graphic? graphic, String maskId) {
       return """
       <g
         id='Clothing/Graphic/Cumbia'
-        mask='url(#${maskId})'
+        mask='url(#$maskId)'
         stroke-width='1'
         fill-rule='evenodd'>
         <g transform='translate(77.000000, 58.000000)' id='Group'>
@@ -443,7 +436,7 @@ String graphic(Graphic? graphic, String maskId) {
       return """
       <g
         id='Clothing/Graphic/Deer'
-        mask='url(#${maskId})'
+        mask='url(#$maskId)'
         fill-rule='evenodd'
         fill='#FFFFFF'>
         <g transform='translate(77.000000, 58.000000)' id='oh,-deer!'>
@@ -454,7 +447,7 @@ String graphic(Graphic? graphic, String maskId) {
       return """
       <g
         id='Clothing/Graphic/Diamond'
-        mask='url(#${maskId})'
+        mask='url(#$maskId)'
         stroke-width='1'
         fill-rule='evenodd'>
         <g transform='translate(77.000000, 58.000000)' id='Diamond'>
@@ -486,7 +479,7 @@ String graphic(Graphic? graphic, String maskId) {
       return """
       <g
         id='Clothing/Graphic/Hola'
-        mask='url(#${maskId})'
+        mask='url(#$maskId)'
         fill-rule='evenodd'
         fill='#FFFFFF'>
         <g transform='translate(77.000000, 58.000000)' id='Hola'>
@@ -497,7 +490,7 @@ String graphic(Graphic? graphic, String maskId) {
       return """
       <g
         id='Clothing/Graphic/Pizza'
-        mask='url(#${maskId})'
+        mask='url(#$maskId)'
         stroke-width='1'
         fill-rule='evenodd'>
         <g transform='translate(77.000000, 58.000000)' id='Group-2'>
@@ -524,7 +517,7 @@ String graphic(Graphic? graphic, String maskId) {
       return """
       <g
         id='Clothing/Graphic/Resist'
-        mask='url(#${maskId})'
+        mask='url(#$maskId)'
         stroke-width='1'
         fill-rule='evenodd'>
         <g transform='translate(77.000000, 58.000000)' id='Resist'>
@@ -576,7 +569,7 @@ String graphic(Graphic? graphic, String maskId) {
       return """
       <g
         id='Clothing/Graphic/Selena'
-        mask='url(#${maskId})'
+        mask='url(#$maskId)'
         stroke-width='1'
         fill-rule='evenodd'>
         <g transform='translate(77.000000, 58.000000)' id='Selena'>
@@ -603,7 +596,7 @@ String graphic(Graphic? graphic, String maskId) {
       return """
       <g
         id='Clothing/Graphic/Bear'
-        mask='url(#${maskId})'
+        mask='url(#$maskId)'
         stroke-width='1'
         fill-rule='evenodd'>
         <defs>
@@ -630,7 +623,7 @@ String graphic(Graphic? graphic, String maskId) {
       return """
       <g
         id='Clothing/Graphic/Skull-Outline'
-        mask='url(#${maskId})'
+        mask='url(#$maskId)'
         stroke-width='1'
         fill-rule='evenodd'>
         <g transform='translate(77.000000, 58.000000)' id='Skull'>
@@ -662,7 +655,7 @@ String graphic(Graphic? graphic, String maskId) {
       return """
       <g
         id='Clothing/Graphic/Skull'
-        mask='url(#${maskId})'
+        mask='url(#$maskId)'
         fill-rule='evenodd'
         fill='#FFFFFF'>
         <g transform='translate(77.000000, 58.000000)' id='Fill-49'>

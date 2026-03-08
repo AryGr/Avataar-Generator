@@ -8,6 +8,13 @@ import 'package:avataar_generator/methods/tops.dart';
 import 'dart:convert';
 
 String getSvg(Options options) {
+  final bgStyle = backgroundStyle(options.style);
+  final skinSvgContent = skinSvg(options.skin, "mask-6");
+  final clothSvgContent = getClothSvg(options.clothes, options.clothColor, options.graphic);
+  final faceSvgContent = faceSvg(options.mouth, options.eyes, options.eyebrow);
+  final topSvgContent = topSVG(options.top, options.facialHair, options.accessories,
+      options.hatColor, options.facialHairColor, options.hairColor);
+
   return """
   <svg
         width="264px"
@@ -41,9 +48,7 @@ String getSvg(Options options) {
                 <mask id="mask-4" fill="white">
                   <use href="#path-3" />
                 </mask>
-                """ +
-      backgroundStyle(options.style) +
-      """
+                $bgStyle
               <g id="Mask" />
               <g
                 id="Avataaar"
@@ -57,9 +62,7 @@ String getSvg(Options options) {
                   <mask id="mask-6" fill="white">
                     <use href="#path-5" />
                   </mask>
-                  <use fill="${skinColorHex(options.skin)}" href="#path-5" />""" +
-      skinSvg(options.skin, "mask-6") +
-      """
+                  <use fill="${skinColorHex(options.skin)}" href="#path-5" />$skinSvgContent
                   <path
                     d="M156,79 L156,102 C156,132.927946 130.927946,158 100,158 C69.072054,158 44,132.927946 44,102 L44,79 L44,94 C44,124.927946 69.072054,150 100,150 C130.927946,150 156,124.927946 156,94 L156,79 Z"
                     id="Neck-Shadow"
@@ -68,12 +71,7 @@ String getSvg(Options options) {
                     mask="url(#mask-6)"
                   />
                 </g>
-                """ +
-      getClothSvg(options.clothes, options.clothColor, options.graphic) +
-      faceSvg(options.mouth, options.eyes, options.eyebrow) +
-      topSVG(options.top, options.facialHair, options.accessories,
-          options.hatColor, options.facialHairColor, options.hairColor) +
-      """
+                $clothSvgContent$faceSvgContent$topSvgContent
               </g>
             </g>
           </g>
@@ -104,18 +102,17 @@ String backgroundStyle(AvatarStyle? style) {
 }
 
 String faceSvg(Mouth? mouth, Eyes? eyes, Eyebrow? eyeBrow) {
-  return """<g id="Face" transform="translate(76.000000, 82.000000)" fill="#000000">""" +
-      mouthSvg(mouth) +
-      noseSvg() +
-      eyesSvg(eyes) +
-      eyebrowSvg(eyeBrow) +
-      """</g>
+  final mouthContent = mouthSvg(mouth);
+  final noseContent = noseSvg();
+  final eyesContent = eyesSvg(eyes);
+  final eyebrowContent = eyebrowSvg(eyeBrow);
+  return """<g id="Face" transform="translate(76.000000, 82.000000)" fill="#000000">$mouthContent$noseContent$eyesContent$eyebrowContent</g>
       """;
 }
 
 extension RandomElement<T> on List<T> {
   T random() {
-    return this[Random().nextInt(this.length)];
+    return this[Random().nextInt(length)];
   }
 }
 
@@ -173,7 +170,7 @@ class Options {
   }
 
   factory Options.fromJson(String str)=> Options.fromMap(json.decode(str));
-  toJson()=> json.encode(this.toMap());
+  String toJson()=> json.encode(toMap());
 
   factory Options.fromMap(Map<String, dynamic> json) {
     Options opt = Options();
